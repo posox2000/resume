@@ -1,0 +1,8 @@
+entity Workhistory{
+	companyName String,
+    location String,
+    position String,
+    startDate Date,
+    endDate Date,
+    jobDescription String    
+}
