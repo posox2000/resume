@@ -2,7 +2,7 @@ entity Workhistory{
 	companyName String,
     location String,
     position String,
-    startDate Date,
-    endDate Date,
+    startDate LocalDate,
+    endDate LocalDate,
     jobDescription String    
 }
