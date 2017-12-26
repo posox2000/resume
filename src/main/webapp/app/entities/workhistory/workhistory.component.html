@@ -1,0 +1,68 @@
+<div>
+    <h2>
+        <span>Workhistories</span>
+        <button class="btn btn-primary float-right jh-create-entity create-workhistory" [routerLink]="['/', { outlets: { popup: ['workhistory-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Workhistory
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="workhistories">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Company Name</span></th>
+            <th><span>Location</span></th>
+            <th><span>Position</span></th>
+            <th><span>Start Date</span></th>
+            <th><span>End Date</span></th>
+            <th><span>Job Description</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let workhistory of workhistories ;trackBy: trackId">
+                <td><a [routerLink]="['../workhistory', workhistory.id ]">{{workhistory.id}}</a></td>
+                <td>{{workhistory.companyName}}</td>
+                <td>{{workhistory.location}}</td>
+                <td>{{workhistory.position}}</td>
+                <td>{{workhistory.startDate | date:'mediumDate'}}</td>
+                <td>{{workhistory.endDate | date:'mediumDate'}}</td>
+                <td>{{workhistory.jobDescription}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../workhistory', workhistory.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'workhistory/'+ workhistory.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'workhistory/'+ workhistory.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
